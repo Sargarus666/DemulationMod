@@ -1,53 +1,45 @@
 # Demulation — HUD в стиле Dune / Sega Genesis
 
-## Рекомендуемая сборка
+## Основная сборка — FIXED
 
-**`safe/DemulationMod_HUD_Sega_SAFE.apk`** — безопасная сборка, подготовленная после сообщения о вылете при запуске РОМ.
+**`fixed/DemulationMod_HUD_Sega_FIXED.apk`** — сборка, в которой найдена и устранена причина вылета при запуске игры.
 
-- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-safe-test
-- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-safe-test/DemulationMod_HUD_Sega_SAFE.apk
-- Исходники: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-safe-test/sources_safe.zip
-- Файлообменник, APK: https://tmpfiles.org/dl/w8AMt6jpi6kG/demulationmod_hud_sega_safe.apk
-- Файлообменник, исходники: https://tmpfiles.org/dl/wTAgtrj9RLXr/sources_safe.zip
-- SHA-256 APK: `f4aa1738b0c9a5e62b43b45a4e13f355782e2fc5cdf3e14c7c95e2e2211e26a3`
+- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-fixed
+- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-fixed/DemulationMod_HUD_Sega_FIXED.apk
+- Временная ссылка: https://tmpfiles.org/dl/wDA4tlaEoWV4/demulationmod_hud_sega_fixed.apk
+- Исходники: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-fixed/sources_fixed.zip
+- SHA-256: `4944e62622bd7304301e4deff6ab0eb985c7c6b8cf3d3b5fc781204eaeb9c69d`
 
-В безопасной сборке убраны три вероятные причины вылета: внешний TTF-шрифт, изменение `activeViewportRect` карты и отдельный `classes3.dex`. Квадратные кнопки над радаром, их иконки и хитбоксы сохранены.
+### Что именно исправлено
 
-**Важно:** в эмуляторе не удалось воспроизвести именно ваш сценарий сбоя из-за системных ANR и ограничений доступа к файлам. Поэтому безопасная сборка пока объявлена тестовой, а не гарантированно исправленной. Проверьте её на том устройстве и РОМ, где возникала ошибка.
+ART при загрузке `MainActivity$WorldView` находил четыре ошибки верификации:
 
-## Что сделано в HUD
+1. `drawFavoriteCircleButton` — неверные регистры в вызове `DuneSegaHud.drawHudButton`.
+2. `drawUnitGroupingModeButton` — та же ошибка, `Paint` вместо `int`.
+3. Удалённая загрузка `Paint.Cap.ROUND` при оставшемся использовании `v2` как `Paint.Cap`.
+4. `RectF` для кнопки юнитов брался из регистра с `int` цветом.
 
-1. Обе кнопки перенесены над радар и выровнены по его центру: слева юниты, справа база.
-2. Кнопки квадратные, в стиле Dune на Sega: тёмный корпус, двойная золотая рамка, фаска, заклёпки по углам.
-3. Иконки «цепочка» и «ангар/база» рисуются пиксельными линиями.
-4. Радар отодвинут от края: отступы увеличены с 4/3 до 8 логических единиц.
-5. Хитбокс кнопки базы совпадает с её квадратом, а не растянут до низа экрана.
-6. Убраны круговые оверлеи поверх квадратной кнопки базы.
-7. В безопасной сборке шрифт только системный моноширинный; в старой версии использовался встроенный пиксельный `dune_sega.ttf`.
+После исправлений принудительная проверка `adb shell cmd package compile -f -m verify com.ahsim.demulation` проходит без ошибок. Замена внесена только в `classes2.dex`: `resources.arsc` и все нативные библиотеки побайтово совпадают с оригинальным APK.
 
-## Предыдущая сборка
+## HUD
 
-`DemulationMod_HUD_Sega_v2.apk` остаётся в этом репозитории как Previous/Legacy.
+- Кнопки юнитов и базы перенесены над радар и выровнены по его центру.
+- Кнопки квадратные: тёмный корпус, двойная золотая рамка, фаска, заклёпки, иконки «цепочка» и «ангар/база».
+- Радар отодвинут от края.
+- Хитбокс кнопки базы совпадает с её квадратом.
+- Круговые оверлеи поверх квадратной кнопки базы убраны.
+- В FIXED-сборке используется только системный моноширинный шрифт без внешнего TTF.
 
-- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-final
-- APK: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-final/DemulationMod_HUD_Sega_v2.apk
-- SHA-256: `697a055ca3dbf143801047e4dfdc79cfee73d68c8962625902875d0a6451833a`
+## Предыдущие сборки
 
-Она полностью сохраняет пиксельный шрифт, но содержит все три потенциально проблемных изменения, перечисленных выше.
+- SAFE тест вылета: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-safe-test
+- Первая сборка с пиксельным шрифтом: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-final
 
-## Как пересобрать безопасную сборку
+Обе они содержали ошибки верификации и не являются основными.
 
-```
-cd .work
-rm -rf apk_safe cls_safe dex_safe
-cp -a apk2 apk_safe
-python3 patch_safe.py          # откат activeViewportRect, удаление TTF
-python3 patch_safe_helper.py   # копия хелпера в classes2 без загрузки TTF
-java -jar apktool.jar b -o safe_raw.apk apk_safe
-$ANDROID_HOME/build-tools/34.0.0/zipalign -p -f 4 safe_raw.apk safe_aligned.apk
-cp safe_aligned.apk safe_signed.apk
-$ANDROID_HOME/build-tools/34.0.0/apksigner sign --ks mod.jks --ks-pass pass:demulation --key-pass pass:demulation safe_signed.apk
-```
+## Статус отладки
+
+Подробности: `DEBUG_STATUS.md`.
 
 ## Важно: почему чужие сборки не запускались
 
@@ -55,8 +47,7 @@ $ANDROID_HOME/build-tools/34.0.0/apksigner sign --ks mod.jks --ks-pass pass:demu
 
 ## Файлы
 
-- `safe/DemulationMod_HUD_Sega_SAFE.apk` — рекомендуемая для теста сборка.
-- `safe/sources_safe.zip` — исходники безопасной сборки.
-- `DemulationMod_HUD_Sega_v2.apk` — предыдущая сборка с пиксельным шрифтом.
-- `sources.zip` — исходники предыдущей сборки.
-- `DEBUG_STATUS.md` — подробный статус отладки вылета.
+- `fixed/DemulationMod_HUD_Sega_FIXED.apk` — основная исправленная сборка.
+- `fixed/sources_fixed.zip` — исходники и все патчи, включая `fix_verify*.py`.
+- `safe/` — предыдущая тестовая сборка.
+- `DEBUG_STATUS.md` — полный лог отладки и найденная причина.

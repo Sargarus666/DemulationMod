@@ -43,3 +43,18 @@
 Исходники_safe-варианта: `release/safe/sources_safe.zip`.
 
 Эта сборка ещё не объявлена основной: сначала нужно проверить, уходит ли вылет на устройстве пользователя.
+
+## Найдена точная причина вылета (22:44)
+
+После принудительной проверки dex через `adb shell cmd package compile -f -m verify com.ahsim.demulation` ART показал две ошибки верификации в `MainActivity$WorldView`:
+
+1. `drawFavoriteCircleButton` — `register v2 has type Precise Constant: 1 but expected Reference: android.graphics.RectF`; вызов `DuneSegaHud.drawHudButton` получал 5 регистров вместо 6 и в неправильном порядке.
+2. `drawUnitGroupingModeButton` — `register v3 has type Reference: android.graphics.Paint but expected Integer`; та же ошибка в вызове хелпера.
+3. Дополнительно после первой правки нашлась третья ошибка: в `drawFavoriteCircleButton` патч удалил загрузку `Paint.Cap.ROUND`, но оставил `setStrokeCap(v2)`, из-за чего `v2` имел тип `Paint.Style` вместо `Paint.Cap`.
+4. Четвёртая ошибка: в `drawUnitGroupingModeButton` прямоугольник брался из `v2`, к тому моменту содержавшего `int` цвет, вместо поля `unitGroupingModeButtonRect`.
+
+Все четыре ошибки исправлены в `.work/fix_verify*.py`. Пересобран APK с заменой **только `classes2.dex`** в оригинальном APK: `resources.arsc` и нативные библиотеки побайтово совпадают с оригиналом, отдельного `classes3.dex` нет.
+
+Повторная проверка `cmd package compile -f -m verify` проходит **без ошибок верификации**. Лаунчер запускается, `FATAL EXCEPTION` не наблюдается.
+
+Новая сборка: `release/fixed/DemulationMod_HUD_Sega_FIXED.apk`, SHA-256 `4944e62622bd7304301e4deff6ab0eb985c7c6b8cf3d3b5fc781204eaeb9c69d`.
