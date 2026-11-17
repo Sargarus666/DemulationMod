@@ -17,6 +17,16 @@
 7. **Хитбоксы исправлены**: зона нажатия кнопки базы теперь совпадает с её квадратом, а не растянута до низа экрана.
 8. **Убраны круговые оверлеи** (рамка выбора и дуга здоровья) поверх квадратной кнопки базы.
 
+## Ссылки для скачивания
+
+- GitHub Release (постоянная): https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-final
+- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-final/DemulationMod_HUD_Sega_v2.apk
+- Исходники ZIP: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-final/sources.zip
+- Файлообменник (временная ссылка, APK): https://tmpfiles.org/dl/1794952296.c548c244637d453f/wKAUtRjwwxmA/demulationmod_hud_sega_v2.apk
+- Файлообменник (временная ссылка, исходники): https://tmpfiles.org/dl/1794952313.546c5fb5a3f370e6/wnAqt7jfwSxR/sources.zip
+
+SHA-256 APK: `697a055ca3dbf143801047e4dfdc79cfee73d68c8962625902875d0a6451833a`
+
 ## Важно: почему чужие сборки не запускались
 
 В манифесте `android:extractNativeLibs="false"`. После `apktool b` нужно обязательно сделать `zipalign -p -f 4` перед подписью, иначе установка падает с `Failed to extract native libraries, res=-2`.
