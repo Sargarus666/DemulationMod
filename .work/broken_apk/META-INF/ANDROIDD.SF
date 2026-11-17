@@ -1,0 +1,68 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android)
+SHA-256-Digest-Manifest: +WK2+WTeSTVC0KCcezEUZbeJedwsAzZ10YBiobAjkUM=
+X-Android-APK-Signed: 2, 3
+
+Name: AndroidManifest.xml
+SHA-256-Digest: TbMbwB13swZpFTJmOy7ezO1Z3GuKLr1HQ/4n6RJDXjQ=
+
+Name: META-INF/com/android/build/gradle/app-metadata.properties
+SHA-256-Digest: hSKzqofj7udo7pqwAX+Ed0COEqkwsieR3bkm5JY3XQE=
+
+Name: classes.dex
+SHA-256-Digest: HaNSWCd/+ssHQinVhBbnqcgolXN8vKHQBwOJ3uxwHoQ=
+
+Name: classes2.dex
+SHA-256-Digest: L07kRECKV/9zOJ73GA2YIBaeGEfabIeI/Y0QguOXX34=
+
+Name: lib/arm64-v8a/libdunehost.so
+SHA-256-Digest: hQSRggceD3vSeD9XkqOB7WCd6G18ULGxZ5pU5g/Lii8=
+
+Name: lib/arm64-v8a/libgme.so
+SHA-256-Digest: uoeE+IUMU35CDPutMuvP6zls9NhjOuhFGGo/vDuIBfI=
+
+Name: lib/armeabi-v7a/libdunehost.so
+SHA-256-Digest: F0ijdmQfHHglPJgzBHAlkDw4ZghKuIuTB3KmDVIqLGs=
+
+Name: lib/armeabi-v7a/libgme.so
+SHA-256-Digest: KuVrf81DAI3lG71Db3Y39zj+caXpOUvLUj6jt2AGhP4=
+
+Name: lib/x86_64/libdunehost.so
+SHA-256-Digest: IZ4k8DN1CBlycWE8hYNFUlBC6sv1kDY56ruYDd3dEUM=
+
+Name: lib/x86_64/libgme.so
+SHA-256-Digest: JYNzPxRlgy397idKI51c1zUOQ/QISDIML9qwBFeSlwU=
+
+Name: res/mipmap-hdpi/ic_launcher.png
+SHA-256-Digest: z3J0S52RjoJp3SgYL1cwexhzLYIVn6U1JCsvVTu1QSo=
+
+Name: res/mipmap-hdpi/ic_launcher_round.png
+SHA-256-Digest: Bq6jCDGL0qGZlet9e39Hwf+dXGSeWmitlUJyYByn8W8=
+
+Name: res/mipmap-mdpi/ic_launcher.png
+SHA-256-Digest: qpOYWpGTfXGl67bz93XP+a8crUd5FuvE3X+X3ftcl8k=
+
+Name: res/mipmap-mdpi/ic_launcher_round.png
+SHA-256-Digest: xCJhL/+uwWAUjOp4Z2lINQe1Ot16yy3u3s8J0kXm/NU=
+
+Name: res/mipmap-xhdpi/ic_launcher.png
+SHA-256-Digest: fXPvTlYDP5mITK8DS6jJ9iVJpd/3APmarVXT5ThnwTA=
+
+Name: res/mipmap-xhdpi/ic_launcher_round.png
+SHA-256-Digest: +F0EFw3l0RHCEpvRnbm+PAFwICQLK/15KlryGjYKJ7o=
+
+Name: res/mipmap-xxhdpi/ic_launcher.png
+SHA-256-Digest: gdfG1g9Cwl23MCHt336zelDivUNzof+3boQ6zXDh8ho=
+
+Name: res/mipmap-xxhdpi/ic_launcher_round.png
+SHA-256-Digest: 6WUekYtZuujmTubNB3L6YCrmzCfYR5zIT3Emnw5mGKE=
+
+Name: res/mipmap-xxxhdpi/ic_launcher.png
+SHA-256-Digest: XE7ANKIS+qhS56/bC2fPc6miT3sPwzbrhTmSBajjaFM=
+
+Name: res/mipmap-xxxhdpi/ic_launcher_round.png
+SHA-256-Digest: oCfH8Tie/ObhpDZdFawlRxCgXMFO1X364tRPuD/tVOg=
+
+Name: resources.arsc
+SHA-256-Digest: GIPLRG3Pr6q3OEzYXBdOh5qhHOV21tI2Q8KkR/DqchA=
+
