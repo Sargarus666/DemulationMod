@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demulation — Dune Sega HUD Mod</title>
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">SEGA MEGA DRIVE · 1994 STYLE</div>
+    <h1>DEMULATION</h1>
+    <p class="subtitle">DUNE: The Battle for Arrakis — HUD Mod</p>
+    <p class="lede">Квадратные кнопки в духе оригинальной Dune на Sega: юниты и база больше не круги,
+      а кнопка юнитов переехала в правое меню на место надписи «КРЕДИТЫ».</p>
+    <div class="cta">
+      <a class="btn primary" href="./download/DemulationMod_HUD_Sega.apk" download>Скачать APK</a>
+      <a class="btn" href="./download/sources.zip" download>Исходники (.zip)</a>
+    </div>
+    <p class="meta">Android · подписан · устанавливается поверх старой версии</p>
+  </header>
+
+  <section class="hud" aria-label="HUD preview">
+    <div class="map">
+      <span>Тактическая карта</span>
+      <div class="terrain"></div>
+    </div>
+    <aside class="menu">
+      <div class="credits">13450</div>
+      <div class="panel">
+        <div class="row">
+          <button class="sq" type="button" aria-label="Юниты">
+            <svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="3.4"/><circle cx="16" cy="12" r="3.4"/><path d="M10 14.5 14 9.5"/></svg>
+          </button>
+          <button class="sq" type="button" aria-label="База">
+            <svg viewBox="0 0 24 24"><path d="M4 14h16v6H4z"/><path d="M3 14 7 7h10l4 7"/><path d="M10 20v-6h4v6"/></svg>
+          </button>
+        </div>
+        <div class="bars"><i></i><i></i><i></i></div>
+      </div>
+      <div class="radar">RADAR</div>
+    </aside>
+  </section>
+
+  <section class="changes">
+    <h2>Что изменено</h2>
+    <ul>
+      <li>Кнопка юнитов и кнопка базы стали <b>квадратными</b>.</li>
+      <li>Кнопка юнитов встроена в <b>правое меню</b> вместо надписи «КРЕДИТЫ».</li>
+      <li>Стиль рамок и иконок — ближе к <b>Sega Dune</b> (тёмный фон, золотой кант).</li>
+      <li>Исправлена сборка: <code>zipalign -p</code> до подписи, иначе установка падает.</li>
+    </ul>
+    <h2>Сборка</h2>
+    <pre><code>apktool b -o unsigned.apk apktoolout
+zipalign -p -f 4 unsigned.apk aligned.apk
+apksigner sign --ks tools/mod.jks aligned.apk</code></pre>
+  </section>
+
+  <footer>
+    <span>Demulation HUD mod · v0.4.768-sega-hud</span>
+    <span>Исходники и релизы на GitHub</span>
+  </footer>
+</main>
+</body>
+</html>
