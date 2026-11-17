@@ -57,4 +57,6 @@
 
 Повторная проверка `cmd package compile -f -m verify` проходит **без ошибок верификации**. Лаунчер запускается, `FATAL EXCEPTION` не наблюдается.
 
+Побайтовое сравнение архивов показало: из всех файлов оригинального APK отличаются только `classes2.dex` и метаданные подписи (`META-INF/MANIFEST.MF`, `DUNE.RSA`, `DUNE.SF` вместо `RIGHTMEN.RSA/.SF`). `classes.dex`, `resources.arsc`, `AndroidManifest.xml`, все `.so`, все ресурсы и ассеты совпадают с оригиналом.
+
 Новая сборка: `release/fixed/DemulationMod_HUD_Sega_FIXED.apk`, SHA-256 `4944e62622bd7304301e4deff6ab0eb985c7c6b8cf3d3b5fc781204eaeb9c69d`.
