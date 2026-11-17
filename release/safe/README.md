@@ -7,6 +7,8 @@
 - GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-safe-test
 - APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-safe-test/DemulationMod_HUD_Sega_SAFE.apk
 - Исходники: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-safe-test/sources_safe.zip
+- Файлообменник, APK: https://tmpfiles.org/dl/w8AMt6jpi6kG/demulationmod_hud_sega_safe.apk
+- Файлообменник, исходники: https://tmpfiles.org/dl/wTAgtrj9RLXr/sources_safe.zip
 - SHA-256 APK: `f4aa1738b0c9a5e62b43b45a4e13f355782e2fc5cdf3e14c7c95e2e2211e26a3`
 
 В безопасной сборке убраны три вероятные причины вылета: внешний TTF-шрифт, изменение `activeViewportRect` карты и отдельный `classes3.dex`. Квадратные кнопки над радаром, их иконки и хитбоксы сохранены.
