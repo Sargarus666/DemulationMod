@@ -1,55 +1,44 @@
-# Demulation — HUD "Dune: The Battle for Arrakis" (Sega style)
+# Demulation — HUD в стиле Dune: The Battle for Arrakis (Sega)
 
-Готовый APK: **`DemulationMod_HUD_Sega.apk`** — подписан, устанавливается, запускается.
+Готовый APK: **`DemulationMod_HUD_Sega_v2.apk`** — подписан, устанавливается, запускается (проверено на эмуляторе Android 14).
 
-## Что изменено
+## Что сделано в этой версии
 
-1. Кнопка юнитов (слева внизу) и кнопка базы (справа у радара) стали **квадратными** вместо круглых.
-2. Кнопка юнитов перенесена в **правое меню** на место надписи «КРЕДИТЫ»; сама надпись убрана (число кредитов осталось).
-3. Квадратная форма применена и к избранным кнопкам (база/юниты).
-4. В исходниках лежит шрифт `assets/fonts/dune_sega.ttf` (на базе Pixelify Sans, адаптирован кириллический О/П) — можно подключить в `drawHudCredits` и др. вместо `Typeface.MONOSPACE`.
+1. **Обе кнопки перенесены над радаром** и выровнены по его центру:
+   - слева — кнопка юнитов, справа — кнопка базы;
+   - размер и зазор рассчитываются от ширины радара, поэтому всегда симметрично.
+2. **Кнопки квадратные**, в стиле оригинальной Dune на Sega:
+   - тёмный корпус, двойная золотая рамка, фаска, заклёпки по углам;
+   - иконки «цепочка» (юниты) и «ангар/база» (база) рисуются пиксельными линиями.
+3. **Радар отодвинут от края**: отступы увеличены с 4/3 до 8 логических единиц.
+4. **Карта отодвинута от угла**: `activeViewportRect` вписан с отступом 24 px со всех сторон.
+5. **Кнопки вынесены над радар**, как вы просили в последнем сообщении; старая надпись «КРЕДИТЫ» в правом меню не используется как место для этих кнопок.
+6. **Шрифт заменён везде**: встроенный `assets/fonts/dune_sega.ttf` (пиксельный, с кириллицей и цифрами) применяется ко всему тексту HUD, включая кредиты, панели выбора и подсказки. Все 10 сбросов на системный `Typeface` убраны.
+7. **Хитбоксы исправлены**: зона нажатия кнопки базы теперь совпадает с её квадратом, а не растянута до низа экрана.
+8. **Убраны круговые оверлеи** (рамка выбора и дуга здоровья) поверх квадратной кнопки базы.
 
-## Важно: почему другие сборки не запускались
+## Важно: почему чужие сборки не запускались
 
-В манифесте стоит `android:extractNativeLibs="false"`. Библиотеки `.so` должны быть **STORED и page-aligned (4096)**. Если после `apktool b` сразу подписывать APK — установка падает с `INSTALL_FAILED_INVALID_APK: Failed to extract native libraries, res=-2`.
+В манифесте `android:extractNativeLibs="false"`. После `apktool b` нужно обязательно сделать `zipalign -p -f 4` перед подписью, иначе установка падает с `Failed to extract native libraries, res=-2`.
 
-Правильный порядок сборки:
+## Как пересобрать
 
 ```
-java -jar tools/apktool.jar b -o unsigned.apk apktoolout
-$ANDROID_HOME/build-tools/34.0.0/zipalign -p -f 4 unsigned.apk aligned.apk
-cp aligned.apk signed.apk
-$ANDROID_HOME/build-tools/34.0.0/apksigner sign \
-  --ks tools/mod.jks --ks-pass pass:demulation --key-pass pass:demulation signed.apk
+java -jar tools/apktool.jar d -f -o apk2 Demulation_original.apk
+python3 patch2.py                      # позиции кнопок, радар, карта
+python3 patch3.py                      # шрифт, хитбокс, оверлеи
+java -jar tools/apktool.jar b -o raw.apk apk2
+cp dex2/classes.dex classes3.dex       # хелпер DuneSegaHud
+zip -q -0 raw.apk classes3.dex
+zipalign -p -f 4 raw.apk aligned.apk
+apksigner sign --ks tools/mod.jks --ks-pass pass:demulation --key-pass pass:demulation aligned.apk
 ```
 
-Ключ: `tools/mod.jks`, пароль `demulation`, alias `dune`.
+## Файлы
 
-## Исходники
-
-- `sources.zip` — полный декодированный проект apktool (smali), включая пропатченный
-  `smali_classes2/com/ahsim/demulation/MainActivity$WorldView.smali`, а также
-  `patch.py`, JADX-исходники и шрифт.
-- `patch.py` — скрипт, который применяет правки к свежему `apktool d`-декоду.
-
-Правки в smali (метод `drawUnitGroupingModeButton`):
-- прямоугольник `unitGroupingModeButtonRect` считается от `layout.hudLeft` / `layout.viewTop`
-  (правое меню, координаты 244..341 логических единиц);
-- `drawCircle` заменён на `drawRect(RectF, Paint)` для заливки и контура.
-
-В `drawFavoriteCircleButton`:
-- `drawCircle` заменён на `drawRect(RectF, Paint)` для заливки и внешней рамки.
-
-В `drawHudCredits`:
-- вызов `uiText("CREDITS","КРЕДИТЫ")` заменён на пустую строку.
-
-## Что можно улучшить дальше
-
-- Подключить `dune_sega.ttf` во всех `textPaint` HUD (сейчас шрифт ещё не применён).
-- Перенести кнопку базы в правое меню: нужно аккуратно переписать `drawFavoriteNavigation`
-  (увеличить число регистров и вынести прямоугольник для `i == 0`).
-- Добавить «сега-стиль» (золотая рамка, угловые заклёпки) через хелпер `DuneSegaHud`.
-
-## Утилиты
-
-`tools/apktool.jar` — Apktool 2.11.1 (для декода/сборки).
+- `DemulationMod_HUD_Sega_v2.apk` — готовая прошивка.
+- `sources.zip` — полный декодированный проект (smali), патч, исходник хелпера, шрифт и `classes3.dex`.
+- `patch2.py` и `patch3.py` — скрипты правок smali.
+- `src2/.../DuneSegaHud.java` — исходник хелпера (стиль кнопок, позиционирование, шрифт).
+- `dune_sega.ttf` — шрифт.
+- `tools/` — apktool и ключ (`mod.jks`, пароль `demulation`, alias `dune`).
