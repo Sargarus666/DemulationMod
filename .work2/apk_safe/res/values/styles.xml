@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GameTheme" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+    <style name="LauncherTheme" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#ff10141a</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:statusBarColor">#ff10141a</item>
+        <item name="android:navigationBarColor">#ff10141a</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
