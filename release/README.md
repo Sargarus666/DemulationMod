@@ -7,7 +7,9 @@
 - APK: `v3/DemulationMod_HUD_Sega_v3.apk`
 - Исходники: `v3/sources_v3.zip`
 - Игровой скриншот HUD: `v3/gameplay_hud_v3.png` (настоящий кадр `GAMEPLAY / TACTICAL`, не макет)
+  — https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/gameplay_hud_v3.png
 - Протокол проверки: `v3/GAMEPLAY_VERIFICATION.md`
+  — https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/GAMEPLAY_VERIFICATION.md
 - GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-v3
 - APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/DemulationMod_HUD_Sega_v3.apk
 - Зеркало: https://tmpfiles.org/dl/w1AItEOtaPT5/demulationmod_hud_sega_v3.apk
