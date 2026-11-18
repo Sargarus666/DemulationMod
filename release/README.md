@@ -6,6 +6,9 @@
 
 - APK: `v3/DemulationMod_HUD_Sega_v3.apk`
 - Исходники: `v3/sources_v3.zip`
+- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-v3
+- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/DemulationMod_HUD_Sega_v3.apk
+- Зеркало: https://tmpfiles.org/dl/w1AItEOtaPT5/demulationmod_hud_sega_v3.apk
 - SHA-256: `8ce662e699768f754cdfb187dc9eed78b65bbf5c244041d480885d7d39ab8cfc`
 - `resources.arsc`, манифест и все `.so` побайтово совпадают с оригиналом; изменены только `classes2.dex` и добавленный шрифт.
 - Подпись проверена, установка на Android 14 и `cmd package compile -f -m verify` проходят, лаунчер запускается без `FATAL EXCEPTION`.

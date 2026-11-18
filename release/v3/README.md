@@ -5,6 +5,10 @@
 - `DemulationMod_HUD_Sega_v3.apk` — подписанный APK.
 - `sources_v3.zip` — полные smali-исходники и `patch_v3.py`.
 - `SHA-256 APK`: `8ce662e699768f754cdfb187dc9eed78b65bbf5c244041d480885d7d39ab8cfc`
+- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-v3
+- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/DemulationMod_HUD_Sega_v3.apk
+- Исходники: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/sources_v3.zip
+- Зеркало APK: https://tmpfiles.org/dl/w1AItEOtaPT5/demulationmod_hud_sega_v3.apk
 
 ## Что изменено
 
@@ -44,8 +48,8 @@ APK собран не «с нуля» из apktool-вывода, а замено
 Запуск самой игры и игровой скриншот **не проверены**: в этом окружении нет
 предоставленного ROM `Dune - The Battle for Arrakis (U) [T+Rus Shedevr(NewGame)&Lipetsk (02.08.2011)].gen`.
 Без него приложение по своему контракту не запускает игру. Геометрия HUD
-проверена расчётом по коду и макетом `site/preview/game_v3_preview.png`;
-для финального подтверждения нужен ROM.
+проверена расчётом по коду и монтажом `site/preview/game_v3_preview.png`
+(реальный кадр игры + наложенный HUD v3); для финального подтверждения нужен ROM.
 
 ## Пересборка
 
