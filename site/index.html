@@ -36,8 +36,17 @@
       <li><b>Иконка меню</b> — три полосы; юниты — «цепочка»; база — «ангар». Хитбоксы совпадают с квадратами.</li>
       <li><b>Вылет при запуске ROM не возвращён:</b> исправление DEX-верификации сохранено, <code>cmd package compile -f -m verify</code> проходит.</li>
     </ul>
-    <p class="meta">Проверено на эмуляторе Android 14: установка, подпись, верификация DEX и запуск лаунчера.
-      Запуск игры требует оригинальный ROM, которого нет в окружении сборки.</p>
+    <p class="meta">Проверено на эмуляторе Android 14: установка, подпись, верификация DEX, запуск лаунчера
+      и 300 случайных событий без падений. Запуск игры требует оригинальный ROM, которого нет в окружении сборки.</p>
+
+    <h2>Проверка рендера HUD из APK</h2>
+    <p class="meta">Это не игровой скриншот. Класс <code>DuneSegaHud</code> взят из реального
+      <code>classes2.dex</code> и запущен на Android 14 через <code>app_process</code>: видны три кнопки
+      75.85×75.85 px с зазорами 14.22 px, ряд 104…360 px и радар 256×256 px.</p>
+    <img class="game-shot" style="max-width:432px;border:2px solid #c9a25d"
+         src="./preview/hud_v3_render_test.png"
+         alt="Рендер HUD v3 из реального DEX на Android 14: три кнопки в ряд над радаром." />
+
     <h2>Сборка</h2>
     <pre><code>apktool b -o unsigned.apk apktoolout
 zipalign -p -f 4 unsigned.apk aligned.apk

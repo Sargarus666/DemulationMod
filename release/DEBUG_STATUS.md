@@ -10,6 +10,7 @@
 - `adb shell cmd package compile -f -m verify com.ahsim.demulation` — `Success`, ошибок верификации DEX нет.
 - Лаунчер открывается, процесс `com.ahsim.demulation` жив, `FATAL EXCEPTION` по пакету нет.
 - Прямой запуск `MainActivity` без выбранного ROM сразу завершается (штатное поведение `LauncherActivity.openGame()`), вылета нет.
+- `DuneSegaHud` из реального `classes2.dex` отрисован на устройстве через `app_process`: три кнопки 75.85×75.85 px, зазоры 14.22 px, ряд 104…360 px (`release/v3/hud_render_test.png`).
 
 ### Что осталось непроверенным
 

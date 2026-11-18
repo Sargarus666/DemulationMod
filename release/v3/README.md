@@ -42,6 +42,7 @@ APK собран не «с нуля» из apktool-вывода, а замено
 | Установка на Android 14 (API 34), x86_64 | `Success` |
 | `cmd package compile -f -m verify com.ahsim.demulation` | `Success`, ошибок верификации нет |
 | Запуск лаунчера | открывается, процесс жив, `FATAL EXCEPTION` нет |
+| Рендер `DuneSegaHud` из реального DEX на устройстве | три кнопки 75.85×75.85 px, зазоры 14.22 px, ряд 104…360 px, см. `hud_render_test.png` |
 
 ## Ограничение проверки
 
