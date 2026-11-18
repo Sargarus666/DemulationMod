@@ -12,28 +12,28 @@
     <div class="eyebrow">SEGA MEGA DRIVE · 1994 STYLE</div>
     <h1>DEMULATION</h1>
     <p class="subtitle">DUNE: The Battle for Arrakis — HUD Mod</p>
-    <p class="lede">Квадратные кнопки в духе оригинальной Dune на Sega: юниты и база больше не круги,
-      а кнопка юнитов переехала в правое меню на место надписи «КРЕДИТЫ».</p>
+    <p class="lede">PRO-сборка: три одинаковые квадратные кнопки перенесены в один ряд сверху над радаром,
+      радар и карта отодвинуты от края экрана, шрифт заменён на Dune SEGA.</p>
     <div class="cta">
-      <a class="btn primary" href="./download/DemulationMod_HUD_Sega_FIXED.apk" download>Скачать APK</a>
-      <a class="btn" href="./download/sources_fixed.zip" download>Исходники (.zip)</a>
+      <a class="btn primary" href="./download/DemulationMod_HUD_Sega_PRO.apk" download>Скачать APK</a>
+      <a class="btn" href="./download/sources_pro.zip" download>Исходники (.zip)</a>
     </div>
     <p class="meta">Android · подписан · устанавливается поверх старой версии</p>
   </header>
 
   <section class="hud" aria-label="Скриншот игры">
-    <img class="game-shot" src="./preview/game_preview.png"
-         alt="Скриншот Demulation: Dune на Sega Genesis, квадратные кнопки над радаром, стилизованные кредиты и HUD. На скриншоте указаны версия v0.4.768 FIXED и исправления." />
+    <img class="game-shot" src="./preview/game_pro_preview.png"
+         alt="Игровой кадр Demulation: три квадратные кнопки 90x90 в ряд над радаром, радар с отступом 16 px от края, шрифт Dune SEGA. На кадре указаны версия v0.4.768 PRO и список исправлений." />
   </section>
 
   <section class="changes">
     <h2>Что изменено</h2>
     <ul>
-      <li>Кнопка юнитов и кнопка базы стали <b>квадратными</b>.</li>
-      <li>Кнопка юнитов встроена в <b>правое меню</b> вместо надписи «КРЕДИТЫ».</li>
-      <li>Стиль рамок и иконок — ближе к <b>Sega Dune</b> (тёмный фон, золотой кант).</li>
-      <li><b>Исправлен вылет при запуске ROM:</b> устранены четыре ошибки верификации DEX в <code>MainActivity$WorldView</code>.</li>
-      <li>Сборка FIXED проходит принудительную проверку ART без ошибок и сохраняет все правки HUD.</li>
+      <li><b>Три кнопки в ряд над радаром:</b> одинаковый размер 90×90 px и равные зазоры 8 px.</li>
+      <li><b>Радар и карта отодвинуты от края:</b> отступ 16 px справа и снизу, радар больше не обрезается.</li>
+      <li><b>Все элементы выровнены</b> по правому краю радара, игровые функции и обработчики нажатий сохранены.</li>
+      <li><b>Шрифт Dune SEGA</b> подключён из <code>assets/fonts/dune_sega.ttf</code> с безопасным откатом на системный моноширинный.</li>
+      <li><b>Вылет при запуске ROM не возвращён:</b> исправление верификации DEX из FIXED сохранено.</li>
     </ul>
     <h2>Сборка</h2>
     <pre><code>apktool b -o unsigned.apk apktoolout
@@ -42,7 +42,7 @@ apksigner sign --ks tools/mod.jks aligned.apk</code></pre>
   </section>
 
   <footer>
-    <span>Demulation HUD mod · v0.4.768 FIXED</span>
+    <span>Demulation HUD mod · v0.4.768 PRO</span>
     <span>Исходники и релизы на GitHub</span>
   </footer>
 </main>

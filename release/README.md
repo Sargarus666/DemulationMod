@@ -1,6 +1,23 @@
 # Demulation — HUD в стиле Dune / Sega Genesis
 
-## Основная сборка — FIXED
+## PRO-сборка (последняя)
+
+**`pro/DemulationMod_HUD_Sega_PRO.apk`** — три кнопки одинакового размера перенесены в ряд над радаром, радар отодвинут от края, подключён шрифт Dune SEGA.
+
+- GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-pro
+- APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-pro/DemulationMod_HUD_Sega_PRO.apk
+- Зеркало: https://tmpfiles.org/dl/wNAEtxYWKwvg/demulationmod_hud_sega_pro.apk
+- Исходники: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-pro/sources_pro.zip
+- SHA-256: `e0c8669622088af46cac188f317c1a49001112138f59ce4876e0eee8c630a0d7`
+
+### Что именно изменилось в PRO
+
+1. `DuneSegaHud.fitRadar()` закрепляет радар в правом нижнем углу с отступом 16 px и размером 286×286 px.
+2. `DuneSegaHud.aboveRadarRect()` размещает три кнопки 90×90 px в один ряд с зазорами 8 px над радаром.
+3. `DuneSegaHud.typeface()` загружает `assets/fonts/dune_sega.ttf`, при ошибке откатывается на `Typeface.MONOSPACE`.
+4. Все старые обработчики нажатий и игровые режимы сохранены, исправление DEX-верификации из FIXED сохранено.
+
+## Предыдущая сборка — FIXED
 
 **`fixed/DemulationMod_HUD_Sega_FIXED.apk`** — сборка, в которой найдена и устранена причина вылета при запуске игры.
 
