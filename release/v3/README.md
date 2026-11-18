@@ -4,6 +4,8 @@
 
 - `DemulationMod_HUD_Sega_v3.apk` — подписанный APK.
 - `sources_v3.zip` — полные smali-исходники и `patch_v3.py`.
+- `gameplay_hud_v3.png` — настоящий игровой скриншот (`GAMEPLAY / TACTICAL`).
+- `GAMEPLAY_VERIFICATION.md` — протокол проверки HUD и трёх кнопок.
 - `SHA-256 APK`: `8ce662e699768f754cdfb187dc9eed78b65bbf5c244041d480885d7d39ab8cfc`
 - GitHub Release: https://github.com/Sargarus666/DemulationMod/releases/tag/hud-sega-v3
 - APK напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/hud-sega-v3/DemulationMod_HUD_Sega_v3.apk
@@ -43,14 +45,24 @@ APK собран не «с нуля» из apktool-вывода, а замено
 | `cmd package compile -f -m verify com.ahsim.demulation` | `Success`, ошибок верификации нет |
 | Запуск лаунчера | открывается, процесс жив, `FATAL EXCEPTION` нет |
 | Рендер `DuneSegaHud` из реального DEX на устройстве | три кнопки 75.85×75.85 px, зазоры 14.22 px, ряд 104…360 px, см. `hud_render_test.png` |
+| Запуск с ROM до игрового процесса | `mode=GAMEPLAY phase=TACTICAL` |
+| HUD и три кнопки в игре | все три реагируют на тап, подробности в `GAMEPLAY_VERIFICATION.md` |
+| Настоящий игровой скриншот | `gameplay_hud_v3.png`, 2400×1080, SHA-256 `926995149e8a5f3a3fde0bc98679b5d66e6cac08be455d4bd033e487983224f9` |
 
-## Ограничение проверки
+## Проверка в игре
 
-Запуск самой игры и игровой скриншот **не проверены**: в этом окружении нет
-предоставленного ROM `Dune - The Battle for Arrakis (U) [T+Rus Shedevr(NewGame)&Lipetsk (02.08.2011)].gen`.
-Без него приложение по своему контракту не запускает игру. Геометрия HUD
-проверена расчётом по коду и монтажом `site/preview/game_v3_preview.png`
-(реальный кадр игры + наложенный HUD v3); для финального подтверждения нужен ROM.
+Предоставленный ROM сохранён в GitHub Release `rom-cache`:
+https://github.com/Sargarus666/DemulationMod/releases/tag/rom-cache
+(SHA-256 `.gen`: `4d93c48957cc81fc49a6edff6353787e5d32eb5e2c86963182fba918a45e906a`).
+
+На эмуляторе Android 14 пройден путь от лаунчера до настоящего игрового процесса.
+В кадре `GAMEPLAY / TACTICAL` три кнопки HUD рисуются в один ровный ряд над радаром;
+левая открывает внутриигровую панель, средняя переключает объединение юнитов,
+правая выбирает базу/избранное. `FATAL EXCEPTION` нет. Диагностическое логирование
+присутствовало только во временном непубликуемом APK; основная сборка v3 не менялась.
+
+Макет `site/preview/game_v3_preview.png` остался только как иллюстрация, а не как
+подтверждение проверки: подтверждением служит `gameplay_hud_v3.png`.
 
 ## Пересборка
 
