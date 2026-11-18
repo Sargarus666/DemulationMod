@@ -38,8 +38,8 @@ const project = resolve(projectDir || join(src, '..'))
 const downloads = join(out, 'download')
 mkdirSync(downloads, { recursive: true })
 const assets = [
-  [join(project, 'release', 'DemulationMod_HUD_Sega.apk'), 'DemulationMod_HUD_Sega.apk'],
-  [join(project, 'release', 'sources.zip'), 'sources.zip'],
+  [join(project, 'release', 'fixed', 'DemulationMod_HUD_Sega_FIXED.apk'), 'DemulationMod_HUD_Sega_FIXED.apk'],
+  [join(project, 'release', 'fixed', 'sources_fixed.zip'), 'sources_fixed.zip'],
 ]
 for (const [from, name] of assets) {
   if (existsSync(from)) {
