@@ -12,7 +12,18 @@
 - SHA-256: `8ce662e699768f754cdfb187dc9eed78b65bbf5c244041d480885d7d39ab8cfc`
 - `resources.arsc`, манифест и все `.so` побайтово совпадают с оригиналом; изменены только `classes2.dex` и добавленный шрифт.
 - Подпись проверена, установка на Android 14 и `cmd package compile -f -m verify` проходят, лаунчер запускается без `FATAL EXCEPTION`.
-- Запуск игры и игровой скриншот не проверены: в окружении отсутствует предоставленный ROM. Подробности — `v3/README.md` и `DEBUG_STATUS.md`.
+- Проверка на эмуляторе Android 14 (API 34) с предоставленным ROM продолжена; ROM теперь закеширован в GitHub Release `rom-cache` (см. ниже), чтобы не запрашивать его повторно. Подробности — `v3/README.md` и `DEBUG_STATUS.md`.
+
+## Кэш ROM для проверки
+
+Предоставленный ROM сохранён в GitHub Release, чтобы не просить файл снова:
+
+- Release: https://github.com/Sargarus666/DemulationMod/releases/tag/rom-cache
+- ROM напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/rom-cache/Dune_Rus.gen
+- ZIP напрямую: https://github.com/Sargarus666/DemulationMod/releases/download/rom-cache/Dune_Rus.zip
+- SHA-256 `.gen`: `4d93c48957cc81fc49a6edff6353787e5d32eb5e2c86963182fba918a45e906a`
+
+Это только тестовая копия для воспроизведения проверки в окружении разработки.
 
 ## PRO-сборка
 

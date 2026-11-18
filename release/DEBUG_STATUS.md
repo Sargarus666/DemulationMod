@@ -11,24 +11,6 @@
 - Лаунчер открывается, процесс `com.ahsim.demulation` жив, `FATAL EXCEPTION` по пакету нет.
 - Прямой запуск `MainActivity` без выбранного ROM сразу завершается (штатное поведение `LauncherActivity.openGame()`), вылета нет.
 - `DuneSegaHud` из реального `classes2.dex` отрисован на устройстве через `app_process`: три кнопки 75.85×75.85 px, зазоры 14.22 px, ряд 104…360 px (`release/v3/hud_render_test.png`).
-- Путь выбора ROM проверен синтетическим тестовым ROM собственного изготовления: лаунчер открыл системный выбор файла, прочитал заголовок, показал «ROM not recognized / No compatible game profile found» и **не упал**. То есть обработка неподдерживаемого ROM работает корректно.
-
-### Автоматическая проверка с настоящим ROM
-
-Добавлен `scripts/verify_game.py`: он устанавливает APK, передаёт ROM через системный выбор файла,
-открывает игру, ждёт `MainActivity`, сохраняет скриншот и лог `FATAL EXCEPTION`.
-Скрипт сверяет SHA-256 ROM с ожидаемым хешем русской локализации
-`4d93c48957cc81fc49a6edff6353787e5d32eb5e2c86963182fba918a45e906a`, который зашит в профилях
-совместимости APK. Запуск:
-
-```bash
-python3 scripts/verify_game.py \
-  --apk release/v3/DemulationMod_HUD_Sega_v3.apk \
-  --rom "/path/to/Dune - The Battle for Arrakis (U) [T+Rus Shedevr(NewGame)&Lipetsk (02.08.2011)].gen"
-```
-
-Скрипт проверен на синтетическом ROM: корректно останавливается на сообщении «ROM not recognized»,
-ложных срабатываний и падений нет.
 
 ### Что осталось непроверенным
 
